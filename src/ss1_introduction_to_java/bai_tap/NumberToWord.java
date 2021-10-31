@@ -10,7 +10,7 @@ public class NumberToWord {
         int number = scanner.nextInt();
 
         int toWord;
-
+        // number = number / 100 + (number - number * 100) / 10 + number % 10;
         if (number > 0) {
             if (number < 10) {
                 toWord = number;

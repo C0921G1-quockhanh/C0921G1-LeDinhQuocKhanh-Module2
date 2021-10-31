@@ -11,6 +11,6 @@ public class CurrencyConversion {
         double USD = scanner.nextDouble();
 
         double VND = USD * rate;
-        System.out.printf("The value of VND after conversion is %f", VND);
+        System.out.printf("The value of VND after conversion is %.0f", VND);
     }
 }
