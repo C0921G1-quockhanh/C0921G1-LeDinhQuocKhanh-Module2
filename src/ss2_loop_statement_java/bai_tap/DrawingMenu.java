@@ -15,7 +15,7 @@ public class DrawingMenu {
             System.out.println("4. Print the square triangle bottom-left");
             System.out.println("5. Print the square triangle bottom-right");
             System.out.println("6. Print isosceles triangle");
-            System.out.println("7. Exit");
+            System.out.println("0. Exit");
 
             System.out.println("Enter your choice: ");
             choice = input.nextInt();
@@ -89,8 +89,8 @@ public class DrawingMenu {
                         System.out.println();
                     }
                     break;
-                case 7:
-                    System.exit(7);
+                case 0:
+                    System.exit(0);
                 default:
                     System.out.println("No choice!");
             }
