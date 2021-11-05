@@ -17,19 +17,19 @@ public class QuadraticEquation {
         return this.c;
     }
     public double getDiscriminant() {
-        double delta = getB() * getB() - 4 * getA() * getC();
+        double delta = this.b * this.b - 4 * this.a * this.c;
         return delta;
     }
     public double getRoot1() {
-        double root1 = (-getB() + Math.sqrt(getDiscriminant())) / (2 * getA());
+        double root1 = (-this.b + Math.sqrt(getDiscriminant())) / (2 * this.a);
         return root1;
     }
     public double getRoot2() {
-        double root2 = (-getB() - Math.sqrt(getDiscriminant())) / (2 * getA());
+        double root2 = (-this.b - Math.sqrt(getDiscriminant())) / (2 * this.a);
         return root2;
     }
     public double getRoot3() {
-        double root3 = (-getB()) / (2 * getA());
+        double root3 = (-this.b) / (2 * this.a);
         return root3;
     }
 }
