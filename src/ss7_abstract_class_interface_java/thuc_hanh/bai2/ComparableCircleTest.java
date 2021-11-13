@@ -1,5 +1,7 @@
 package ss7_abstract_class_interface_java.thuc_hanh.bai2;
 
+import ss6_inheritance_java.thuc_hanh.Circle;
+
 import java.util.Arrays;
 
 public class ComparableCircleTest {
