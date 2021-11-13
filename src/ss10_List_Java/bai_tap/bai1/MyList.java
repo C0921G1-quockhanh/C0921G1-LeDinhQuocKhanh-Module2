@@ -3,6 +3,7 @@ package ss10_List_Java.bai_tap.bai1;
 import java.util.Arrays;
 
 public class MyList<E> {
+    //Data fields - Constructor - Method Get
     private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] elements;
@@ -15,6 +16,11 @@ public class MyList<E> {
         elements = new Object[capacity];
     }
 
+    public int getLength() {
+        return elements.length;
+    }
+
+    //Method of Array List
     public void add(int index, E element) {
         if (size == elements.length) {
             ensureCapacity(elements.length * 2);
@@ -39,14 +45,67 @@ public class MyList<E> {
         return size;
     }
 
+    public MyList<E> clone() {
+        MyList<E> newMyList= new MyList<>(elements.length);
+        Object[] newElements = new Object[elements.length];
+        System.arraycopy(elements,0,newElements,0,size);
+        newMyList.size = this.size;
+        newMyList.elements = newElements;
+        return newMyList;
+    }
+
+    public boolean contains(E o) {
+        int i = 0;
+        while(i < size) {
+            if (elements[i] == o) {
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
+
+    public int indexOf(E o) {
+        int i = 0;
+        while (i < size) {
+            if (elements[i] == o) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+
+    public boolean add(E o) {
+        if (size == elements.length) {
+            ensureCapacity(elements.length*2);
+        }
+        elements[size] = o;
+        size += 1;
+        return elements[size-1] == o;
+    }
+
+    public void clear() {
+        size = 0;
+    }
+
     public void ensureCapacity(int minCapacity) {
         elements = Arrays.copyOf(elements,minCapacity);
     }
 
     public E get(int i) {
         if (i >= size || i < 0) {
-            throw new IndexOutOfBoundsException("Index: " + i + ", Size: " + i);
+            throw new IndexOutOfBoundsException("Index is out of bound exception");
         }
         return (E) elements[i];
+    }
+
+    @Override
+    public String toString() {
+        String display = "";
+        for (int i = 0; i < size; i++) {
+            display += elements[i] + "\t";
+        }
+        return display;
     }
 }
