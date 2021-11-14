@@ -1,0 +1,51 @@
+package ss10_list_java.bai_tap.bai2;
+
+public class MyLinkedList<E> {
+    //Data fields - Constructor
+    private int numNodes = 0;
+    private Node head;
+
+    private class Node {
+        private Object data;
+        private Node next;
+
+        public Node(Object data) {
+            this.data = data;
+        }
+
+        public Object getData() {
+            return this.data;
+        }
+    }
+
+    public MyLinkedList(Object data) {
+        head = new Node(data);
+    }
+
+    //Methods
+    public void add(int index, E element) {
+        Node temp = head;
+        Node holder;
+
+        for (int i = 0; i < index-1 && temp.next != null; i++) {
+            temp = temp.next;
+        }
+
+        holder = temp.next;
+        temp.next = new Node(element);
+        temp.next.next = holder;
+        numNodes++;
+    }
+
+    public void addFirst(E element) {
+        Node temp = head;
+        head = new Node(element);
+        head.next = temp;
+        numNodes++;
+    }
+
+    public void addLast(E element) {
+
+    }
+
+}
