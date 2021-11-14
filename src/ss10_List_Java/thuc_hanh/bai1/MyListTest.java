@@ -1,4 +1,4 @@
-package ss10_List_Java.thuc_hanh.bai1;
+package ss10_list_java.thuc_hanh.bai1;
 
 public class MyListTest {
     public static void main(String[] args) {

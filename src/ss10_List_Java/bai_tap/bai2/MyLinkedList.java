@@ -45,7 +45,29 @@ public class MyLinkedList<E> {
     }
 
     public void addLast(E element) {
+        Node temp = head;
 
+        for (int i = 0; i < numNodes-1 && temp.next != null; i++) {
+            temp = temp.next;
+        }
+
+        temp.next = new Node(element);
+        numNodes++;
     }
 
+    public E remove(int index) {
+        Node temp = head;
+        Node removeNode;
+
+        for (int i = 0; i < index-1 && temp.next != null; i++) {
+            temp = temp.next;
+        }
+
+        removeNode = temp.next;
+
+
+
+        numNodes--;
+        return (E) removeNode;
+    }
 }

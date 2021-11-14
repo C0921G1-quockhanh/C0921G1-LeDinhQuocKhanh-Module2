@@ -1,4 +1,4 @@
-package ss10_List_Java.thuc_hanh.bai2;
+package ss10_list_java.thuc_hanh.bai2;
 
 public class TestMyLinkedList {
     public static void main(String[] args) {
