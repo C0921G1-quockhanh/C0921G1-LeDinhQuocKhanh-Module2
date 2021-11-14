@@ -46,8 +46,9 @@ public class MyLinkedList<E> {
 
     public void addLast(E element) {
         Node temp = head;
+        Node tail;
 
-        for (int i = 0; i < numNodes-1 && temp.next != null; i++) {
+        while (temp.next != null) {
             temp = temp.next;
         }
 
@@ -64,10 +65,18 @@ public class MyLinkedList<E> {
         }
 
         removeNode = temp.next;
-
-
-
+        temp.next = temp.next.next;
         numNodes--;
         return (E) removeNode;
     }
+
+    public void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
+
+
 }
