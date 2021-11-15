@@ -1,6 +1,6 @@
 package ss2_loop_statement_java.bai_tap;
 
-public class getTwentyPrimes {
+public class FirstTwentyPrimes {
     public static void main(String[] args) {
         int numbers = 20;
         int count = 0;

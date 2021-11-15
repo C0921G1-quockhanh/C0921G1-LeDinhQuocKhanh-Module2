@@ -46,7 +46,6 @@ public class MyLinkedList<E> {
 
     public void addLast(E element) {
         Node temp = head;
-        Node tail;
 
         while (temp.next != null) {
             temp = temp.next;
@@ -69,6 +68,73 @@ public class MyLinkedList<E> {
         numNodes--;
         return (E) removeNode;
     }
+    
+    public E removeFirst() {
+        Node removeNode = head;
+        head = head.next;
+        return (E) removeNode;
+    }
+
+    public E removeLast() {
+        Node temp = head;
+        Node removeNode;
+
+        if (temp == null) {
+            return null;
+        }
+
+        if (temp.next == null) {
+            numNodes--;
+            return (E) temp;
+        }
+
+        while (temp.next != null && temp.next.next != null) {
+            temp = temp.next;
+        }
+
+        removeNode = temp.next.next;
+        temp.next = null;
+        return  (E) removeNode;
+    }
+
+    public boolean contains(E o) {
+        Node temp = head;
+
+        while (temp != null) {
+            if (temp.data == o) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    public E get(int index) {
+        Node temp = head;
+        Node holder;
+
+        for (int i = 0; i < index && temp.next != null; i++) {
+            temp = temp.next;
+        }
+
+        holder = temp;
+        return (E) holder.data;
+    }
+
+    public E getFirst() {
+        Node temp = head;
+        return (E) temp.data;
+    }
+
+    public E getLast() {
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        return (E) temp.data;
+    }
 
     public void printList() {
         Node temp = head;
@@ -77,6 +143,4 @@ public class MyLinkedList<E> {
             temp = temp.next;
         }
     }
-
-
 }

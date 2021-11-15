@@ -1,6 +1,6 @@
 package ss2_loop_statement_java.bai_tap;
 
-public class getPrimesUnder100 {
+public class PrimesUnder100 {
     public static void main(String[] args) {
         for (int i = 2; i <= 100; i++) {
             if (isPrime(i)) {
