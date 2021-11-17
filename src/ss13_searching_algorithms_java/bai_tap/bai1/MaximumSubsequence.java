@@ -8,7 +8,7 @@ public class MaximumSubsequence {
         System.out.println("Enter a string: ");
         String inputString = sc.nextLine();
 
-        //Ascii
+        //Tao mang de luu ma ascii tuong ung voi tung ki tu
         int[] asciiArr = new int[inputString.length()];
 
         for (int i = 0; i < inputString.length(); i++) {
@@ -16,46 +16,39 @@ public class MaximumSubsequence {
             asciiArr[i] = ascii;
         }
 
-        int[] maxLength = new int[inputString.length()];
-        int[] position = new int[inputString.length()];
+        //Tao 2 mang maxLength - positionOfPreviousChar
+        int[] maxLength = new int[asciiArr.length];
+        int[] positionOfPreviousChar = new int[asciiArr.length];
 
         for (int i = 0; i < asciiArr.length; i++) {
             maxLength[i] = 1;
-            position[i] = -1;
+            positionOfPreviousChar[i] = -1;
+
             for (int j = 0; j < i; j++) {
-                if (asciiArr[j] < asciiArr[i] && maxLength[i] < maxLength[j] + 1) {
+                if (asciiArr[i] > asciiArr[j] && maxLength[i] < maxLength[j] + 1) {
                     maxLength[i] = maxLength[j] + 1;
-                    position[i] = j;
+                    positionOfPreviousChar[i] = j;
                 }
             }
         }
 
-        for (int i = 0; i < maxLength.length; i++) {
-            System.out.print(maxLength[i]);
-        }
-
-        System.out.println();
-
-        for (int i = 0; i < position.length; i++) {
-            System.out.print(position[i]);
-        }
-
-
-        int max = maxLength[0];
-        int index = 0;
+        //Tim ra gia tri lon nhat trong maxLength
+        int maxOfLength = maxLength[0];
+        int indexOfMax = 0;
 
         for (int i = 1; i < maxLength.length; i++) {
-            if (maxLength[i] > max) {
-                max = maxLength[i];
-                index = i;
+            if (maxLength[i] > maxOfLength) {
+                maxOfLength = maxLength[i];
+                indexOfMax = i;
             }
         }
-        System.out.println();
+
+        //Ket qua bai toan
         String result = "";
 
-        while (index != -1) {
-            result = inputString.charAt(index) + result;
-            index = position[index];
+        while (indexOfMax != -1) {
+            result = inputString.charAt(indexOfMax) + result;
+            indexOfMax = positionOfPreviousChar[indexOfMax];
         }
 
         System.out.println(result);
