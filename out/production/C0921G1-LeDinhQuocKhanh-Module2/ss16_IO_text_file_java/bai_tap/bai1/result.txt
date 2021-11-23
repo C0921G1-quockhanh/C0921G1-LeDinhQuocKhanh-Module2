@@ -1,0 +1,3 @@
+Toi la Nguyen Van A lop C0921G1 CODEGYM DANANG!
+Để sao chép nội dung từ tệp tin nguồn đến tệp tin đích, bạn nên sử dụng luồng đầu vào để đọc ký tự từ tệp nguồn và luồng đầu ra để gửi byte đến tệp tin đích, bất kể nội dung của tệp.
+The number of chars in source file is 231
