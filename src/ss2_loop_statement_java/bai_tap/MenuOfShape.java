@@ -7,7 +7,7 @@ public class MenuOfShape {
         int choice = -1;
         Scanner input = new Scanner(System.in);
 
-        while (choice != 7) {
+        while (choice != 0) {
             System.out.println("Menu: ");
             System.out.println("1. Print the rectangle");
             System.out.println("2. Print the square triangle top-left");
