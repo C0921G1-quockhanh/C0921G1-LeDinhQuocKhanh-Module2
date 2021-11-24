@@ -3,18 +3,32 @@ package ss17_file_serialization_java.bai_tap.bai1.controller;
 import ss17_file_serialization_java.bai_tap.bai1.models.Product;
 import ss17_file_serialization_java.bai_tap.bai1.services.ProductManager;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ProductSystem {
     Scanner sc = new Scanner(System.in);
 
     ProductManager productManager;
+    String path;
 
     public ProductSystem() {
     }
 
-    public ProductSystem(ProductManager productManager) {
+    public ProductSystem(ProductManager productManager, String path) {
         this.productManager = productManager;
+        this.path = path;
+        productManager.setProductList(readDataFromFile(path));
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public void displaySystem() {
@@ -57,8 +71,45 @@ public class ProductSystem {
                     break;
 
                 case 0:
+                    writeToFile(this.getPath(),productManager.getProductList());
                     System.exit(0);
             }
+        }
+    }
+
+    public static List<Product> readDataFromFile(String path) {
+        List<Product> productList = new ArrayList<>();
+
+        File file = new File(path);
+        if (!file.exists())
+            return productList;
+
+        try {
+            FileInputStream fis = new FileInputStream(path);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            productList = (List<Product>) ois.readObject();
+            ois.close();
+            fis.close();
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return productList;
+    }
+
+    public static void writeToFile(String path,List<Product> productList) {
+        try {
+            FileOutputStream fos = new FileOutputStream(path);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(productList);
+            oos.close();
+            fos.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

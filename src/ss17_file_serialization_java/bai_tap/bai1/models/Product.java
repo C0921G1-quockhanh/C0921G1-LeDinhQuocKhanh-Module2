@@ -1,6 +1,8 @@
 package ss17_file_serialization_java.bai_tap.bai1.models;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     protected int ID;
     protected String productName;
     protected String manufacturer;
