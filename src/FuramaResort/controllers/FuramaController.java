@@ -1,9 +1,23 @@
 package FuramaResort.controllers;
 
+import FuramaResort.services.CustomerServiceImpl;
+import FuramaResort.services.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
     Scanner sc = new Scanner(System.in);
+
+    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+    CustomerServiceImpl customerService = new CustomerServiceImpl();
+
+    public EmployeeServiceImpl getEmployeeService() {
+        return employeeService;
+    }
+
+    public CustomerServiceImpl getCustomerService() {
+        return customerService;
+    }
 
     public void displayMainMenu() {
         int choice = -1;
@@ -18,7 +32,7 @@ public class FuramaController {
             System.out.println("0.\tExit");
 
             System.out.println("Enter your choice: ");
-            choice = sc.nextInt();
+            choice = Integer.parseInt(sc.nextLine());
 
             switch (choice) {
                 case 1:
@@ -32,14 +46,23 @@ public class FuramaController {
                         System.out.println("0.\tReturn main menu");
 
                         System.out.println("Enter your choice: ");
-                        subChoice1 = sc.nextInt();
+                        subChoice1 = Integer.parseInt(sc.nextLine());
 
                         switch (subChoice1) {
                             case 1:
+                                employeeService.displayList();
+                                break;
 
                             case 2:
+                                employeeService.addNew();
+                                break;
 
                             case 3:
+                                System.out.println("Enter the code of employee you want to edit: ");
+                                String employeeCode = sc.nextLine();
+
+                                employeeService.edit(employeeCode);
+                                break;
 
                             case 0:
                                 System.out.println("Returning to main menu!");
@@ -62,14 +85,23 @@ public class FuramaController {
                         System.out.println("0.\tReturn main menu");
 
                         System.out.println("Enter your choice: ");
-                        subChoice2 = sc.nextInt();
+                        subChoice2 = Integer.parseInt(sc.nextLine());
 
                         switch (subChoice2) {
                             case 1:
+                                customerService.displayList();
+                                break;
 
                             case 2:
+                                customerService.addNew();
+                                break;
 
                             case 3:
+                                System.out.println("Enter the code of customer you want to edit: ");
+                                String customerCode = sc.nextLine();
+
+                                customerService.edit(customerCode);
+                                break;
 
                             case 0:
                                 System.out.println("Returning to main menu!");
@@ -88,11 +120,12 @@ public class FuramaController {
                         System.out.println("FACILITY MANAGEMENT: ");
                         System.out.println("1.\tDisplay list facility");
                         System.out.println("2.\tAdd new facility");
-                        System.out.println("3.\tDisplay list facility maintenance");
+                        System.out.println("3.\tEdit facility");
+                        System.out.println("4.\tDisplay list facility maintenance");
                         System.out.println("0.\tReturn main menu");
 
                         System.out.println("Enter your choice: ");
-                        subChoice3 = sc.nextInt();
+                        subChoice3 = Integer.parseInt(sc.nextLine());
 
                         switch (subChoice3) {
                             case 1:
@@ -100,6 +133,8 @@ public class FuramaController {
                             case 2:
 
                             case 3:
+
+                            case 4:
 
                             case 0:
                                 System.out.println("Returning to main menu!");
@@ -116,15 +151,16 @@ public class FuramaController {
 
                     while (subChoice4 != 0) {
                         System.out.println("BOOKING MANAGEMENT: ");
-                        System.out.println("1.\tAdd new booking");
-                        System.out.println("2.\tDisplay list booking");
-                        System.out.println("3.\tCreate new contract");
+                        System.out.println("1.\tDisplay list booking");
+                        System.out.println("2.\tAdd new booking");
+                        System.out.println("3.\tEdit booking");
                         System.out.println("4.\tDisplay list contracts");
-                        System.out.println("5.\tEdit contracts");
+                        System.out.println("5.\tAdd new contract");
+                        System.out.println("6.\tEdit contract");
                         System.out.println("0.\tReturn main menu");
 
                         System.out.println("Enter your choice: ");
-                        subChoice4 = sc.nextInt();
+                        subChoice4 = Integer.parseInt(sc.nextLine());
 
                         switch (subChoice4) {
                             case 1:
@@ -136,6 +172,8 @@ public class FuramaController {
                             case 4:
 
                             case 5:
+
+                            case 6:
 
                             case 0:
                                 System.out.println("Returning to main menu!");
@@ -157,7 +195,7 @@ public class FuramaController {
                         System.out.println("0.\tReturn main menu");
 
                         System.out.println("Enter your choice: ");
-                        subChoice5 = sc.nextInt();
+                        subChoice5 = Integer.parseInt(sc.nextLine());
 
                         switch (subChoice5) {
                             case 1:
