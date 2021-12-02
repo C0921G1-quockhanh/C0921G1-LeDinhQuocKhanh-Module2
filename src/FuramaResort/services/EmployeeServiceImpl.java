@@ -33,6 +33,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         System.out.println("Enter your date of birth: ");
         String dateOfBirth = sc.nextLine();
+        dateOfBirth = validEmployee.validDateOfBirth(dateOfBirth);
 
         System.out.println("Enter your sex: ");
         String sex = sc.nextLine();

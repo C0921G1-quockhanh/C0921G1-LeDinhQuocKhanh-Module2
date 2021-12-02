@@ -10,15 +10,21 @@ public class ValidDataPerson {
     public String validDateOfBirth(String dateOfBirth) {
         final String DATE_OF_BIRTH_REGEX = "^(\\d){1,2}/(\\d){1,2}/(\\d){4}$";
 
-        while (!dateOfBirth.matches(DATE_OF_BIRTH_REGEX)) {
-            System.out.println("Please check the date of birth! Enter again: ");
-            dateOfBirth = sc.nextLine();
-        }
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate birthDayTime = LocalDate.parse(dateOfBirth,formatter);
         LocalDate now = LocalDate.now();
+        LocalDate eighteenYears = birthDayTime.plusYears(18);
+        LocalDate oneHundredYears = birthDayTime.plusYears(100);
 
+        while (!dateOfBirth.matches(DATE_OF_BIRTH_REGEX) || eighteenYears.isAfter(now) || oneHundredYears.isBefore(now)) {
+            System.out.println("Please check the date of birth! Enter again: ");
+            dateOfBirth = sc.nextLine();
+            birthDayTime = LocalDate.parse(dateOfBirth,formatter);
+            eighteenYears = birthDayTime.plusYears(18);
+            oneHundredYears = birthDayTime.plusYears(100);
+        }
+
+        return dateOfBirth;
     }
 
     public String validPhoneNumber(String phoneNumber) {
