@@ -10,6 +10,7 @@ public class CustomerServiceImpl implements CustomerService {
     Scanner sc = new Scanner(System.in);
 
     List<Customer> customers = new LinkedList<>();
+    ValidDataPerson validCustomer = new ValidDataPerson();
 
     public void add(Customer customer) {
         customers.add(customer);
@@ -41,12 +42,15 @@ public class CustomerServiceImpl implements CustomerService {
 
         System.out.println("Enter your phone number: ");
         String phoneNumber = sc.nextLine();
+        phoneNumber = validCustomer.validPhoneNumber(phoneNumber);
 
         System.out.println("Enter your mail: ");
         String email = sc.nextLine();
+        email = validCustomer.validEmail(email);
 
         System.out.println("Enter your type of customer: ");
         String typeOfCustomer = sc.nextLine();
+        typeOfCustomer = validCustomer.validTypeOfCustomer(typeOfCustomer);
 
         System.out.println("Enter your address: ");
         String address = sc.nextLine();
@@ -83,18 +87,21 @@ public class CustomerServiceImpl implements CustomerService {
                 case 2:
                     System.out.println("Enter new phone number: ");
                     String newPhoneNumber = sc.nextLine();
+                    newPhoneNumber = validCustomer.validPhoneNumber(newPhoneNumber);
                     customer.setPhoneNumber(newPhoneNumber);
                     break;
 
                 case 3:
                     System.out.println("Enter new email: ");
                     String newEmail = sc.nextLine();
+                    newEmail = validCustomer.validEmail(newEmail);
                     customer.setEmail(newEmail);
                     break;
 
                 case 4:
                     System.out.println("Enter new type of customer: ");
                     String newTypeOfCustomer = sc.nextLine();
+                    newTypeOfCustomer = validCustomer.validTypeOfCustomer(newTypeOfCustomer);
                     customer.setTypeOfCustomer(newTypeOfCustomer);
                     break;
 

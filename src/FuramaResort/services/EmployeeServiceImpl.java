@@ -10,6 +10,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     Scanner sc = new Scanner(System.in);
 
     List<Employee> employees = new ArrayList<>();
+    ValidDataPerson validEmployee = new ValidDataPerson();
 
     public void add(Employee employee) {
         employees.add(employee);
@@ -41,15 +42,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         System.out.println("Enter your phone number: ");
         String phoneNumber = sc.nextLine();
+        phoneNumber = validEmployee.validPhoneNumber(phoneNumber);
 
         System.out.println("Enter your mail: ");
         String email = sc.nextLine();
+        email = validEmployee.validEmail(email);
 
         System.out.println("Enter your academic level: ");
         String qualification = sc.nextLine();
+        qualification = validEmployee.validQualification(qualification);
 
         System.out.println("Enter your working position: ");
         String workingPosition = sc.nextLine();
+        workingPosition = validEmployee.validWorkingPosition(workingPosition);
 
         System.out.println("Enter your salary: ");
         double salary = Double.parseDouble(sc.nextLine());
@@ -87,24 +92,28 @@ public class EmployeeServiceImpl implements EmployeeService {
                 case 2:
                     System.out.println("Enter new phone number: ");
                     String newPhoneNumber = sc.nextLine();
+                    newPhoneNumber = validEmployee.validPhoneNumber(newPhoneNumber);
                     employee.setPhoneNumber(newPhoneNumber);
                     break;
 
                 case 3:
                     System.out.println("Enter new email: ");
                     String newEmail = sc.nextLine();
+                    newEmail = validEmployee.validEmail(newEmail);
                     employee.setEmail(newEmail);
                     break;
 
                 case 4:
                     System.out.println("Enter new qualification: ");
                     String newQualification = sc.nextLine();
+                    newQualification = validEmployee.validQualification(newQualification);
                     employee.setQualification(newQualification);
                     break;
 
                 case 5:
                     System.out.println("Enter new working position: ");
                     String newWorkingPosition = sc.nextLine();
+                    newWorkingPosition = validEmployee.validWorkingPosition(newWorkingPosition);
                     employee.setWorkingPosition(newWorkingPosition);
                     break;
 

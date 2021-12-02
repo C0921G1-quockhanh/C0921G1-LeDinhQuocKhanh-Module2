@@ -2,6 +2,7 @@ package FuramaResort.controllers;
 
 import FuramaResort.services.CustomerServiceImpl;
 import FuramaResort.services.EmployeeServiceImpl;
+import FuramaResort.services.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class FuramaController {
 
     EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     CustomerServiceImpl customerService = new CustomerServiceImpl();
+    FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
     public EmployeeServiceImpl getEmployeeService() {
         return employeeService;
@@ -17,6 +19,10 @@ public class FuramaController {
 
     public CustomerServiceImpl getCustomerService() {
         return customerService;
+    }
+
+    public FacilityServiceImpl getFacilityService() {
+        return facilityService;
     }
 
     public void displayMainMenu() {
@@ -120,8 +126,7 @@ public class FuramaController {
                         System.out.println("FACILITY MANAGEMENT: ");
                         System.out.println("1.\tDisplay list facility");
                         System.out.println("2.\tAdd new facility");
-                        System.out.println("3.\tEdit facility");
-                        System.out.println("4.\tDisplay list facility maintenance");
+                        System.out.println("3.\tDisplay list facility maintenance");
                         System.out.println("0.\tReturn main menu");
 
                         System.out.println("Enter your choice: ");
@@ -129,12 +134,41 @@ public class FuramaController {
 
                         switch (subChoice3) {
                             case 1:
+                                facilityService.displayList();
+                                break;
 
                             case 2:
+                                int facilityChoice = -1;
+
+                                while (facilityChoice != 0) {
+                                    System.out.println("ADDING NEW FACILITY");
+                                    System.out.println("1.\tAdd new Villa");
+                                    System.out.println("2.\tAdd new House");
+                                    System.out.println("3.\tAdd new Room");
+                                    System.out.println("0.\tBack to menu");
+
+                                    System.out.println("Enter your choice: ");
+                                    facilityChoice = Integer.parseInt(sc.nextLine());
+
+                                    switch (facilityChoice) {
+                                        case 1:
+                                        case 2:
+                                        case 3:
+                                            facilityService.addNew();
+                                            break;
+
+                                        case 0:
+                                            break;
+
+                                        default:
+                                            System.out.println("Please check your option!");
+                                    }
+                                }
+                                break;
 
                             case 3:
-
-                            case 4:
+                                facilityService.displayListFacilityMaintenance();
+                                break;
 
                             case 0:
                                 System.out.println("Returning to main menu!");
