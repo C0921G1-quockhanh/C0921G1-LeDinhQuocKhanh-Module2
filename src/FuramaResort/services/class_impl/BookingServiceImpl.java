@@ -174,6 +174,7 @@ public class BookingServiceImpl implements BookingService {
                             numOfUse++;
                         else
                             System.out.println("This facility is in maintenance! Hope you choose other options!");
+                            bookings.remove(checkedBooking);
                     } else {
                         numOfUse = 1;
                     }
@@ -189,5 +190,11 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void edit(String nonUse){
+    }
+
+    public Queue<Booking> changeSetToQueue() {
+        Queue<Booking> bookingQueue = new ArrayDeque<>();
+        bookings.addAll(bookingQueue);
+        return bookingQueue;
     }
 }

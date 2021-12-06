@@ -323,6 +323,9 @@ public class FacilityServiceImpl implements FacilityService {
     public void addNew() {
         int defaultNumOfUse = 0;
 
+        System.out.println("Enter the type of facility you want to create: ");
+        String facilityType = sc.nextLine();
+
         System.out.println("Enter the name of service: ");
         String nameService = sc.nextLine();
         nameService = validFacility.validNameService(nameService);
@@ -342,9 +345,6 @@ public class FacilityServiceImpl implements FacilityService {
         System.out.println("Enter the rental type: ");
         String rentalType = sc.nextLine();
         rentalType = validFacility.validRentalType(rentalType);
-
-        System.out.println("Enter the type of facility you want to create: ");
-        String facilityType = sc.nextLine();
 
         switch (facilityType) {
             case "Villa":
