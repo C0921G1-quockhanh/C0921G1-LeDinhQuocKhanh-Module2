@@ -145,8 +145,7 @@ public class BookingServiceImpl implements BookingService {
             }
         }
 
-        if (nonExist)
-            if (bookings.add(checkedBooking)) {
+        if (nonExist) {
                 String[] checkedEndTime = endDay.split("/");
                 int checkedEndMonth = Integer.parseInt(checkedEndTime[1]);
 
@@ -170,21 +169,23 @@ public class BookingServiceImpl implements BookingService {
                     int endMonth = Integer.parseInt(endTime[1]);
 
                     if (checkedEndMonth == endMonth) {
-                        if (numOfUse < 5)
+                        if (numOfUse < 5) {
+                            bookings.add(checkedBooking);
                             numOfUse++;
-                        else
+                        } else {
                             System.out.println("This facility is in maintenance! Hope you choose other options!");
-                            bookings.remove(checkedBooking);
+                        }
                     } else {
+                        bookings.add(checkedBooking);
                         numOfUse = 1;
                     }
                 } else {
+                    bookings.add(checkedBooking);
                     numOfUse = 1;
                 }
 
                 facilities.replace(facility,numOfUse);
-            }
-        else
+        } else
             System.out.println("This booking is existed! Please try again!");
     }
 
@@ -193,8 +194,6 @@ public class BookingServiceImpl implements BookingService {
     }
 
     public Queue<Booking> changeSetToQueue() {
-        Queue<Booking> bookingQueue = new ArrayDeque<>();
-        bookings.addAll(bookingQueue);
-        return bookingQueue;
+        return new ArrayDeque<>(bookings);
     }
 }

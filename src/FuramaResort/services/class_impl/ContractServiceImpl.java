@@ -138,4 +138,10 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public void edit(String nonUse) {
     }
+
+    public void displayBookingQueue() {
+        for (Booking booking: bookingQueue) {
+            System.out.println(booking);
+        }
+    }
 }
