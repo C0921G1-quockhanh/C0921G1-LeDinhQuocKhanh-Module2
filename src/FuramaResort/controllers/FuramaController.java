@@ -225,8 +225,7 @@ public class FuramaController {
                                 break;
 
                             case 4:
-                                bookingService.displayList();
-
+                                contractService.displayBookingQueue();
                                 contractService.addNew();
                                 break;
                             case 0:
