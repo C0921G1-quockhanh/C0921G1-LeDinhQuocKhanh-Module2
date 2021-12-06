@@ -1,8 +1,9 @@
 package FuramaResort.controllers;
 
-import FuramaResort.services.CustomerServiceImpl;
-import FuramaResort.services.EmployeeServiceImpl;
-import FuramaResort.services.FacilityServiceImpl;
+import FuramaResort.services.class_impl.BookingServiceImpl;
+import FuramaResort.services.class_impl.CustomerServiceImpl;
+import FuramaResort.services.class_impl.EmployeeServiceImpl;
+import FuramaResort.services.class_impl.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -11,7 +12,8 @@ public class FuramaController {
 
     EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     CustomerServiceImpl customerService = new CustomerServiceImpl();
-    FacilityServiceImpl facilityService = new FacilityServiceImpl();
+    BookingServiceImpl  bookingService = new BookingServiceImpl();
+    FacilityServiceImpl facilityService = bookingService.getFacilityService();
 
     public EmployeeServiceImpl getEmployeeService() {
         return employeeService;
@@ -19,6 +21,10 @@ public class FuramaController {
 
     public CustomerServiceImpl getCustomerService() {
         return customerService;
+    }
+
+    public BookingServiceImpl getBookingService() {
+        return bookingService;
     }
 
     public FacilityServiceImpl getFacilityService() {
@@ -71,6 +77,7 @@ public class FuramaController {
                                 break;
 
                             case 0:
+                                employeeService.writeEmployeeToCSV();
                                 System.out.println("Returning to main menu!");
                                 break;
 
@@ -110,6 +117,7 @@ public class FuramaController {
                                 break;
 
                             case 0:
+                                customerService.writeCustomerToCSV();
                                 System.out.println("Returning to main menu!");
                                 break;
 
@@ -171,6 +179,9 @@ public class FuramaController {
                                 break;
 
                             case 0:
+                                facilityService.writeVillaToCSV();
+                                facilityService.writeHouseToCSV();
+                                facilityService.writeRoomToCSV();
                                 System.out.println("Returning to main menu!");
                                 break;
 
@@ -187,10 +198,9 @@ public class FuramaController {
                         System.out.println("BOOKING MANAGEMENT: ");
                         System.out.println("1.\tDisplay list booking");
                         System.out.println("2.\tAdd new booking");
-                        System.out.println("3.\tEdit booking");
-                        System.out.println("4.\tDisplay list contracts");
-                        System.out.println("5.\tAdd new contract");
-                        System.out.println("6.\tEdit contract");
+                        System.out.println("3.\tDisplay list contracts");
+                        System.out.println("4.\tAdd new contract");
+                        System.out.println("5.\tEdit contract");
                         System.out.println("0.\tReturn main menu");
 
                         System.out.println("Enter your choice: ");
@@ -198,8 +208,16 @@ public class FuramaController {
 
                         switch (subChoice4) {
                             case 1:
+                                bookingService.displayList();
+                                break;
 
                             case 2:
+                                customerService.displayList();
+                                System.out.println("---------------------------------");
+                                facilityService.displayList();
+
+                                bookingService.addNew();
+                                break;
 
                             case 3:
 
@@ -207,9 +225,8 @@ public class FuramaController {
 
                             case 5:
 
-                            case 6:
-
                             case 0:
+                                bookingService.writeBookingToCSV();
                                 System.out.println("Returning to main menu!");
                                 break;
 
